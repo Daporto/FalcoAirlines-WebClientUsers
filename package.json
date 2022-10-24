@@ -1,0 +1,25 @@
+{
+  "name": "falcoairlines_webclientusers",
+  "version": "1.0.0",
+  "description": "This repository is part of FalcoAirlines project, and is for practice and implement several concepts of clean architecture and API designs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daporto/FalcoAirlines-WebClientUsers.git"
+  },
+  "author": "Daniel Porto Rojas <dporto@bancolombia.com.co>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daporto/FalcoAirlines-WebClientUsers/issues"
+  },
+  "homepage": "https://github.com/Daporto/FalcoAirlines-WebClientUsers#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.10.3",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.6.7"
+  }
+}

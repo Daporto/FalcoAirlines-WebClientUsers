@@ -1,0 +1,11 @@
+type User {
+    id: ID,
+    username: string,
+    email: string
+}
+
+input UserCreationInput {
+    username: string,
+    password: string,
+    email: string
+}

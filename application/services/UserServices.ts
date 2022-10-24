@@ -1,14 +1,18 @@
 import { RegisterUserUseCase } from "../../domain/useCases/RegisterUserUseCase";
-import { UserRegistrationDto } from "../dtos/UserRegistrationDto";
-import { UserResponseDto } from "../dtos/UserResponseDto";
-import { UserMapper } from "../mappers/UserMapper";
+import UserCreationDto from "../dtos/UserCreationDto";
+import { UserResponseDto } from "../dtos/interfaces/UserResponseDto";
+import UserMapperInterface from "../mappers/UserMapperInterface";
 import { UserServicesInterface } from "./UserServicesInterface";
 
-export class UserServices implements UserServicesInterface{
-    userMapper = new UserMapper();
+export default class UserServices implements UserServicesInterface{
+    userMapper: UserMapperInterface;
 
-    registerNewUser(userData: UserRegistrationDto): UserResponseDto {
-        const newUser = this.userMapper.userRegistrationDtoToUser(userData);
+    constructor(userMapper: UserMapperInterface){
+        this.userMapper = userMapper;
+    }
+
+    registerNewUser(userData: UserCreationDto): UserResponseDto {
+        const newUser = this.userMapper.userCreationDtoToUser(userData);
         return this.userMapper.userToUserResponseDto(newUser);
     }
 }

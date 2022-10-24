@@ -1,7 +1,7 @@
 import { User } from "../../domain/entities/User"
-import { UserRegistrationDto } from "../dtos/UserRegistrationDto"
-import { UserResponseDto } from "../dtos/UserResponseDto"
-export interface UserMapperInterface {
-    userRegistrationDtoToUser(userData: UserRegistrationDto): User;
+import UserCreationDto from "../dtos/UserCreationDto"
+import { UserResponseDto } from "../dtos/interfaces/UserResponseDto"
+export default interface UserMapperInterface {
+    userCreationDtoToUser(userData: UserCreationDto): User;
     userToUserResponseDto(user: User): UserResponseDto
 }
