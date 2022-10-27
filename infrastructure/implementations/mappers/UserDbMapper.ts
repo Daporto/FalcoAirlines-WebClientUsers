@@ -4,7 +4,7 @@ import IUserDbMapper from "./IUserDbMapper";
 import {Types} from 'mongoose'
 
 export default class UserRepositoryMapper implements IUserDbMapper{
-    userDbSchemaToUser(userDbObject: UserDbShema): User {
+    userDbObjectToUser(userDbObject: UserDbShema): User {
         const user: User = {
             id: userDbObject._id.toString(),
             username: userDbObject.username,
@@ -13,7 +13,7 @@ export default class UserRepositoryMapper implements IUserDbMapper{
         }
         return user;
     }
-    userToUserDbShema(user: User): UserDbShema {
+    userToUserDbObject(user: User): UserDbShema {
         const userDbObject: UserDbShema = {
             _id: new Types.ObjectId(user.id),
             username: user.username,

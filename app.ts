@@ -1,6 +1,8 @@
-const express = require("express");
-import cors from "express";
-const { ApolloServer } = require("apollo-server-express");
+import express from 'express'
+import cors from 'express'
+import {schema} from './infrastructure/driving-adapters/graphql/schema';
+import {ApolloServer} from "apollo-server-express";
+//const shema = require("./infrastructure/driving-adapters/graphql/shema");
 
 const app = express();
 app.use(cors());
@@ -13,8 +15,7 @@ app.get("/", (req, res) => {
 async function start() {
 
 const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers,
+  schema
 });
 
 await apolloServer.start();

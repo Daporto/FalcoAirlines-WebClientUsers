@@ -1,6 +1,6 @@
-import { UserRegistrationDto } from "../dtos/UserRegistrationDto"
+import UserCreationDto from "../dtos/UserCreationDto"
 import { UserResponseDto } from "../dtos/interfaces/UserResponseDto"
 
 export interface UserServicesInterface {
-    registerNewUser(userData: UserRegistrationDto): UserResponseDto
+    registerNewUser(userData: UserCreationDto): Promise<UserResponseDto>
 }

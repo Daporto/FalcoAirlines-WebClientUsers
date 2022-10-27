@@ -1,11 +1,29 @@
-type User {
-    id: ID,
-    username: string,
-    email: string
+interface generalError {
+    errorCode: String,
+    errorDesc: String
 }
 
-input UserCreationInput {
-    username: string,
-    password: string,
-    email: string
+type User {
+    id: ID,
+    username: String,
+    email: String
 }
+
+type InvalidInputError implements generalError{
+    errorCode: String,
+    errorDesc: String
+}
+
+type emailAlreadyRegisteredError implements generalError{
+    errorCode: String,
+    errorDesc: String
+}
+
+input UserRegisterInput {
+    username: String,
+    password: String,
+    email: String
+}
+
+union UserRegisterResult = User | InvalidInputError | emailAlreadyRegisteredError
+union UserGetResult = User | InvalidInputError

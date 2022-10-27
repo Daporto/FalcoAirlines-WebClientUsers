@@ -8,8 +8,8 @@ export class RegisterUserUseCase implements RegisterUserInterface{
         this.userRepository = userRepository;
     }
 
-    execute(user: User): User {
-        const savedUser = this.userRepository.saveUser(user)
+    async execute(user: User): Promise<User> {
+        const savedUser = await this.userRepository.saveUser(user)
         return savedUser;
     }
 }

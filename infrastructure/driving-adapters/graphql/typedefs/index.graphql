@@ -1,3 +1,7 @@
 type Mutation {
-    createUser(user: UserCreationInput): User
+    createUser(user: UserRegisterInput): UserRegisterResult
+}
+
+type Query {
+    user: [User]
 }
