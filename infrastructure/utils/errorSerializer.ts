@@ -1,4 +1,5 @@
-import BusinessError from "../../domain/business-errors/BusinessError"
+import BusinessError from "../../domain/exceptions/BusinessError"
+import UnexpectedError from "../exceptions/UnexpectedError";
 
 export default function serializeError(error: any) {
     let newError;
@@ -9,7 +10,11 @@ export default function serializeError(error: any) {
         };
         console.log(newError)
     } else {
-        newError = error;
+        const unexpectedError = new UnexpectedError();
+        newError = {
+            __type: "TechnicalError",
+            ...unexpectedError
+        }
     }
     return newError;
 }

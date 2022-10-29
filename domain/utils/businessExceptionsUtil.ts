@@ -4,12 +4,14 @@ export interface IBusinessErrorsUtil {
 
 interface IBusinessErrorUtil {
     code: string,
-    description: string
+    description: string,
+    staticMessage: string
 }
 
-export const businessErrors: IBusinessErrorsUtil = {
+export const businessErrorsUtil: IBusinessErrorsUtil = {
     EmptyFieldError: {
         code: "BE-1",
+        staticMessage: "One of the required fields is missing",
         description: "One of the required fields is empty"
     }
 }

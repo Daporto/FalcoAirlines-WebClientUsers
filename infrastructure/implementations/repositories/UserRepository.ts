@@ -2,6 +2,7 @@ import User from "../../../domain/entities/User";
 import IUserRepository from "../../../domain/repositories/IUserRepository";
 import MongoDb from '../../driven-adapters/db/mongodb';
 import UserDbMapper from "../mappers/UserDbMapper";
+import { Types } from "mongoose";
 const UserModel = require("../../driven-adapters/db/mongodb/models/User") 
 
 export default class UserRepository implements IUserRepository {
@@ -15,8 +16,9 @@ export default class UserRepository implements IUserRepository {
     }
 
     async saveUser(user: User): Promise<User> {
-        const newUserObject = this.userDbMapper.userToUserDbObject(user);
-        const savedUser = await UserModel.create(newUserObject);
+        const newUserDbObject = this.userDbMapper.userToUserDbObject(user);
+        newUserDbObject._id = new Types.ObjectId();
+        const savedUser = await UserModel.create(newUserDbObject);
         const newUser = this.userDbMapper.userDbObjectToUser(savedUser);
         return newUser;
     }

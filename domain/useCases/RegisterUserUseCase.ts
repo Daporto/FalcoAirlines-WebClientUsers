@@ -1,7 +1,7 @@
 import User from "../entities/User";
 import IRegisterUserUseCase from "./interfaces/IRegisterUserUseCase";
 import IUserRepository from '../repositories/IUserRepository'
-import EmptyFieldError from '../business-errors/EmptyFieldError'
+import EmptyFieldError from '../exceptions/EmptyFieldError'
 
 export class RegisterUserUseCase implements IRegisterUserUseCase {
     userRepository: IUserRepository;

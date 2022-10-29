@@ -14,11 +14,16 @@ type BusinessError implements IGeneralError {
     errorMessage: String
 }
 
+type TechnicalError implements IGeneralError {
+    errorCode: String,
+    errorMessage: String
+}
+
 input UserRegisterInput {
     username: String,
     password: String,
     email: String
 }
 
-union UserRegisterResult = User | BusinessError
-union UserGetResult = User | BusinessError
+union UserRegisterResult = User | BusinessError | TechnicalError
+union UserGetResult = User | BusinessError | TechnicalError

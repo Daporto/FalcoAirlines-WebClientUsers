@@ -1,4 +1,4 @@
-export default class BusinessError extends Error{
+export default class TechnicalError extends Error {
     errorCode: string;
     errorMessage: string
     constructor(code: string, errorMessage: string){

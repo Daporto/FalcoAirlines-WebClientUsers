@@ -6,7 +6,7 @@ import UserDbModelDto from "../dtos/UserDbModelDto";
 export default class UserRepositoryMapper implements IUserDbMapper{
     userDbObjectToUser(userDbObject: UserDbModelDto): User {
         const user: User = {
-            id: userDbObject._id.toString(),
+            id: userDbObject._id ? userDbObject._id.toString() : undefined,
             username: userDbObject.username,
             password: userDbObject.password,
             email: userDbObject.email
@@ -14,12 +14,13 @@ export default class UserRepositoryMapper implements IUserDbMapper{
         return user;
     }
     userToUserDbObject(user: User): UserDbModelDto {
+        console.log(user);
         const userDbObject: UserDbModelDto = {
-            _id: user.id ? new Types.ObjectId(user.id) : new Types.ObjectId(""),
+            _id: user.id ? new Types.ObjectId(user.id) : undefined,
             username: user.username,
             password: user.password,
             email: user.email
         }
-        return new UserDbModelDto(userDbObject._id, userDbObject.username, userDbObject.password, userDbObject.email);
+        return new UserDbModelDto(userDbObject.username, userDbObject.password, userDbObject.email, userDbObject._id);
     }
 }
