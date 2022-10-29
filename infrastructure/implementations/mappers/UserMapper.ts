@@ -1,7 +1,7 @@
-import { User } from "../../../domain/entities/User";
+import User from "../../../domain/entities/User";
 import UserCreationDto from "../../../application/dtos/UserCreationDto";
-import { UserResponseDto } from "../../../application/dtos/interfaces/UserResponseDto";
-import UserMapperInterface from "../../../application/mappers/UserMapperInterface";
+import UserDto from "../../../application/dtos/UserDto";
+import UserMapperInterface from "../../../application/mappers/IUserMapper";
 
 export default class UserMapper implements UserMapperInterface{
     userCreationDtoToUser(userData: UserCreationDto): User {
@@ -10,15 +10,14 @@ export default class UserMapper implements UserMapperInterface{
             password: userData.password,
             email: userData.email
         }
-        return user
+        return new User(user.username, user.password, user.email)
     }
-    userToUserResponseDto(user: User): UserResponseDto {
-        const userResponse: UserResponseDto = {
-            __typename:"User",
-            id: user.id,
+    userToUserDto(user: User): UserDto {
+        const userResponse: UserDto = {
+            id: user.id ? user.id : "",
             username: user.username,
             email: user.email
         }
-        return userResponse
+        return new UserDto(userResponse.id, userResponse.username, userResponse.email);
     }
 }

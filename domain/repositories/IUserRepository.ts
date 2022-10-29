@@ -1,6 +1,6 @@
-import {User} from '../entities/User'
+import User from '../entities/User'
 
-export interface UserRepositoryInterface {
+export default interface IUserRepository {
     saveUser(user: User): Promise<User>;
     getUserByUsername(username: string): Promise<User>;
     deleteUser(user: User): boolean;

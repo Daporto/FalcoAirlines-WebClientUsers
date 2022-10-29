@@ -1,10 +1,10 @@
-import { User } from "../../../domain/entities/User";
-import { UserRepositoryInterface } from "../../../domain/repositories/UserRepositoryInterface";
+import User from "../../../domain/entities/User";
+import IUserRepository from "../../../domain/repositories/IUserRepository";
 import MongoDb from '../../driven-adapters/db/mongodb';
 import UserDbMapper from "../mappers/UserDbMapper";
 const UserModel = require("../../driven-adapters/db/mongodb/models/User") 
 
-export default class UserRepository implements UserRepositoryInterface {
+export default class UserRepository implements IUserRepository {
     mongoDb:MongoDb;
     userDbMapper:UserDbMapper;
 

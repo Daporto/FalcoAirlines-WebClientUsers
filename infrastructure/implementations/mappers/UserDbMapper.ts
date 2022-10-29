@@ -1,10 +1,10 @@
-import { User } from "../../../domain/entities/User";
-import UserDbShema from "../../driven-adapters/db/mongodb/models/IUserDbShema";
-import IUserDbMapper from "./IUserDbMapper";
+import User from "../../../domain/entities/User";
+import IUserDbMapper from "./interfaces/IUserDbMapper";
 import {Types} from 'mongoose'
+import UserDbModelDto from "../dtos/UserDbModelDto";
 
 export default class UserRepositoryMapper implements IUserDbMapper{
-    userDbObjectToUser(userDbObject: UserDbShema): User {
+    userDbObjectToUser(userDbObject: UserDbModelDto): User {
         const user: User = {
             id: userDbObject._id.toString(),
             username: userDbObject.username,
@@ -13,13 +13,13 @@ export default class UserRepositoryMapper implements IUserDbMapper{
         }
         return user;
     }
-    userToUserDbObject(user: User): UserDbShema {
-        const userDbObject: UserDbShema = {
-            _id: new Types.ObjectId(user.id),
+    userToUserDbObject(user: User): UserDbModelDto {
+        const userDbObject: UserDbModelDto = {
+            _id: user.id ? new Types.ObjectId(user.id) : new Types.ObjectId(""),
             username: user.username,
             password: user.password,
             email: user.email
         }
-        return userDbObject;
+        return new UserDbModelDto(userDbObject._id, userDbObject.username, userDbObject.password, userDbObject.email);
     }
 }

@@ -1,10 +1,10 @@
-import { User } from "../entities/User";
-import { RegisterUserInterface } from "./interfaces/RegisterUserInterface";
-import {UserRepositoryInterface} from '../repositories/UserRepositoryInterface'
+import User from "../entities/User";
+import IRegisterUserUseCase from "./interfaces/IRegisterUserUseCase";
+import IUserRepository from '../repositories/IUserRepository'
 
-export class RegisterUserUseCase implements RegisterUserInterface{
-    userRepository: UserRepositoryInterface;
-    constructor(userRepository: UserRepositoryInterface){
+export class RegisterUserUseCase implements IRegisterUserUseCase {
+    userRepository: IUserRepository;
+    constructor(userRepository: IUserRepository){
         this.userRepository = userRepository;
     }
 
