@@ -1,6 +1,6 @@
-interface generalError {
+interface IGeneralError {
     errorCode: String,
-    errorDesc: String
+    errorMessage: String
 }
 
 type User {
@@ -9,14 +9,9 @@ type User {
     email: String
 }
 
-type InvalidInputError implements generalError{
+type BusinessError implements IGeneralError {
     errorCode: String,
-    errorDesc: String
-}
-
-type emailAlreadyRegisteredError implements generalError{
-    errorCode: String,
-    errorDesc: String
+    errorMessage: String
 }
 
 input UserRegisterInput {
@@ -25,5 +20,5 @@ input UserRegisterInput {
     email: String
 }
 
-union UserRegisterResult = User | InvalidInputError | emailAlreadyRegisteredError
-union UserGetResult = User | InvalidInputError
+union UserRegisterResult = User | BusinessError
+union UserGetResult = User | BusinessError
