@@ -1,4 +1,5 @@
 import BusinessError from "../../domain/exceptions/BusinessError"
+import TechnicalError from "../exceptions/TechnicalError";
 import UnexpectedError from "../exceptions/UnexpectedError";
 
 export default function serializeError(error: any) {
@@ -9,12 +10,18 @@ export default function serializeError(error: any) {
             ...error
         };
         console.log(newError)
+    } else if (error instanceof TechnicalError){
+        newError = {
+            __typename: "TechnicalError",
+            ...error
+        };
     } else {
         const unexpectedError = new UnexpectedError();
         newError = {
-            __type: "TechnicalError",
+            __typename: "TechnicalError",
             ...unexpectedError
         }
     }
+    console.log(newError);
     return newError;
 }

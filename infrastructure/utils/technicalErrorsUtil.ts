@@ -1,5 +1,6 @@
 export interface ITechnicalErrorsUtil {
-    UnexpectedError: ITechnicalErrorUtil
+    UnexpectedError: ITechnicalErrorUtil,
+    PasswordEncryptionError: ITechnicalErrorUtil
 }
 
 interface ITechnicalErrorUtil {
@@ -13,5 +14,10 @@ export const technicalErrorsUtil: ITechnicalErrorsUtil = {
         code: "TE-1",
         staticMessage: "Ups! something unexpected went wrong in the process",
         description: "This error happens when an unexpected error occurred"
+    },
+    PasswordEncryptionError: {
+        code: "TE-2",
+        staticMessage: "Ups! something went wrong encrypting the password",
+        description: "This error happens when an error occur encrypting the password"
     }
 }
