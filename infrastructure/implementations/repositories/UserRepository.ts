@@ -14,6 +14,23 @@ export default class UserRepository implements IUserRepository {
         this.mongoDb.connect()
         this.userDbMapper = new UserDbMapper();
     }
+    async getUserById(id: string): Promise<User> {
+        const userDbObject = await UserModel.findById(id);
+        console.log(userDbObject);
+        if(userDbObject){
+            return this.userDbMapper.userDbObjectToUser(userDbObject);
+        }else{
+            return userDbObject;
+        }
+    }
+    async checkIfEmailExists(email: string): Promise<boolean>{
+        const user = await UserModel.findOne({"email":email});
+        if(user){
+            return true
+        }else {
+            return false
+        }
+    }
 
     async saveUser(user: User): Promise<User> {
         const newUserDbObject = this.userDbMapper.userToUserDbObject(user);
@@ -21,9 +38,6 @@ export default class UserRepository implements IUserRepository {
         const savedUser = await UserModel.create(newUserDbObject);
         const newUser = this.userDbMapper.userDbObjectToUser(savedUser);
         return newUser;
-    }
-    getUserByUsername(username: string): Promise<User> {
-        throw new Error("Method not implemented.");
     }
     deleteUser(user: User): boolean {
         throw new Error("Method not implemented.");
