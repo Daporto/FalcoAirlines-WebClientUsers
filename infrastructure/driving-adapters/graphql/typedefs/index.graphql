@@ -3,5 +3,5 @@ type Mutation {
 }
 
 type Query {
-    getUserById(id: ID!): UserGetResult
+    getUserById(id: ID): UserGetResult
 }

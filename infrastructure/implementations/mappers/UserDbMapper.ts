@@ -7,9 +7,8 @@ export default class UserRepositoryMapper implements IUserDbMapper{
     userDbObjectToUser(userDbObject: UserDbModelDto): User {
         const user: User = {
             id: userDbObject._id ? userDbObject._id.toString() : undefined,
-            username: userDbObject.username,
+            email: userDbObject.email,
             password: userDbObject.password,
-            email: userDbObject.email
         }
         return user;
     }
@@ -17,10 +16,9 @@ export default class UserRepositoryMapper implements IUserDbMapper{
         console.log(user);
         const userDbObject: UserDbModelDto = {
             _id: user.id ? new Types.ObjectId(user.id) : undefined,
-            username: user.username,
-            password: user.password,
-            email: user.email
+            email: user.email,
+            password: user.password
         }
-        return new UserDbModelDto(userDbObject.username, userDbObject.password, userDbObject.email, userDbObject._id);
+        return new UserDbModelDto(userDbObject.email, userDbObject.password, userDbObject._id);
     }
 }

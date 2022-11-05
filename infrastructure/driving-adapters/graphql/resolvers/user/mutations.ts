@@ -12,13 +12,12 @@ const userMutations = {
       try {
             const {
               user: {
-                username,
-                password,
-                email
+                email,
+                password
               }
             } = args
           const encryptedPassword = await encryptPassword(password);
-          const userCreationDto = new UserCreationDto(username, encryptedPassword, email);
+          const userCreationDto = new UserCreationDto(email, encryptedPassword);
           const newUser = await userServices.registerNewUser(userCreationDto);
           console.log(newUser)
           return serializeSuccessResponse(newUser);

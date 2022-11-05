@@ -1,5 +1,5 @@
 import TechnicalError from "./TechnicalError";
-import { technicalErrorsUtil, ITechnicalErrorsUtil } from "../utils/technicalErrorsUtil";
+import { technicalErrorsUtil, ITechnicalErrorsUtil } from "../utils/errors/technicalErrorsUtil";
 
 export default class UnexpectedError extends TechnicalError {
     dynamicMessage?: string;

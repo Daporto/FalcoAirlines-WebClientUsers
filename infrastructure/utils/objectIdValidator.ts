@@ -1,10 +1,10 @@
 import {Types} from 'mongoose'
 
 export function isAValidObjectId(id: string){
-    const objectId = new Types.ObjectId(id)
-    if(objectId.toString() =="id"){
+    try {
+        new Types.ObjectId(id);
         return true
-    }else{
+    } catch (error) {
         return false
     }
 }

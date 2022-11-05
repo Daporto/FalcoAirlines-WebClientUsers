@@ -6,18 +6,16 @@ import UserMapperInterface from "../../../application/mappers/IUserMapper";
 export default class UserMapper implements UserMapperInterface{
     userCreationDtoToUser(userData: UserCreationDto): User {
         const user: User = {
-            username: userData.username,
+            email: userData.email,
             password: userData.password,
-            email: userData.email
         }
-        return new User(user.username, user.password, user.email)
+        return new User(user.email, user.password)
     }
     userToUserDto(user: User): UserDto {
         const userResponse: UserDto = {
             id: user.id ? user.id : "",
-            username: user.username,
             email: user.email
         }
-        return new UserDto(userResponse.id, userResponse.username, userResponse.email);
+        return new UserDto(userResponse.id, userResponse.email);
     }
 }

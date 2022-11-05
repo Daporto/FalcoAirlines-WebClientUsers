@@ -1,4 +1,5 @@
 import BusinessError from "../../domain/exceptions/BusinessError"
+import InvalidInputError from "../exceptions/InvalidInputError";
 import TechnicalError from "../exceptions/TechnicalError";
 import UnexpectedError from "../exceptions/UnexpectedError";
 
@@ -15,6 +16,11 @@ export default function serializeError(error: any) {
             __typename: "TechnicalError",
             ...error
         };
+    } else if(error instanceof InvalidInputError){
+        newError = {
+            __typename: "InvalidInputError",
+            ...error
+        }
     } else {
         const unexpectedError = new UnexpectedError();
         newError = {

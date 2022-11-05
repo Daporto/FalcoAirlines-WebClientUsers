@@ -3,7 +3,6 @@ import {businessErrorsUtil, IBusinessErrorsUtil} from "../utils/businessExceptio
 
 
 export default class EmptyFieldError extends BusinessError {
-    dynamicErrorMessage?: string;
     constructor(errorMessage?: string){
         const errorInfo = businessErrorsUtil[EmptyFieldError.name as keyof IBusinessErrorsUtil];
         const message = errorMessage ? errorMessage : errorInfo.staticMessage;

@@ -21,7 +21,7 @@ export class RegisterUserUseCase implements IRegisterUserUseCase {
     }
 
     validateEmptyFields(user: User){
-        const requiredFields = ["username", "password", "email"];
+        const requiredFields = ["email","password"];
         for (const requiredField of requiredFields) {
             let propertyValue = user[requiredField as keyof User];
             if(!propertyValue || propertyValue===""){
