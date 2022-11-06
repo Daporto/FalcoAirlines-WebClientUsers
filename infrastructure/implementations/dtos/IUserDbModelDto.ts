@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 interface IPersonalInformation {
     firstName: string,
     surname: string,
@@ -8,14 +10,9 @@ interface IPersonalInformation {
     phoneNumber: string
 }
 
-export default class UserDto {
-    id:string;
+export default interface IUserDbModelDto {
+    _id?: Types.ObjectId;
     email: string;
+    password: string;
     personalInformation: IPersonalInformation;
-
-    constructor(id: string, email:string, personalInformation: IPersonalInformation){
-        this.id = id;
-        this.email = email;
-        this.personalInformation = personalInformation;
-    }
 }

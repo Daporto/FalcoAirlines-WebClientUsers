@@ -8,14 +8,9 @@ interface IPersonalInformation {
     phoneNumber: string
 }
 
-export default class UserDto {
-    id:string;
-    email: string;
-    personalInformation: IPersonalInformation;
 
-    constructor(id: string, email:string, personalInformation: IPersonalInformation){
-        this.id = id;
-        this.email = email;
-        this.personalInformation = personalInformation;
-    }
+export default interface IUserCreationDto {
+    email: string;
+    password: string;
+    personalInformation: IPersonalInformation;
 }

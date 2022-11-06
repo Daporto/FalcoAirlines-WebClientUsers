@@ -1,5 +1,5 @@
 import { RegisterUserUseCase } from "../../domain/useCases/RegisterUserUseCase";
-import UserCreationDto from "../dtos/UserCreationDto";
+import UserCreationDto from "../dtos/IUserCreationDto";
 import UserDto from "../dtos/UserDto";
 import UserMapperInterface from "../mappers/IUserMapper";
 import IUserServices from "./IUserServices";

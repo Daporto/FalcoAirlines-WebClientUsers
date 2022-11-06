@@ -1,4 +1,4 @@
-import UserCreationDto from "../dtos/UserCreationDto"
+import UserCreationDto from "../dtos/IUserCreationDto"
 import UserDto from "../dtos/UserDto"
 
 export default interface IUserServices {

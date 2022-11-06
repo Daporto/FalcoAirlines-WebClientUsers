@@ -1,3 +1,4 @@
+import UserDto from "../../../../../application/dtos/UserDto";
 import UserServices from "../../../../../application/services/UserServices";
 import InvalidIdError from "../../../../exceptions/InvalidIdError";
 import NullValueError from "../../../../exceptions/NullValueError";
@@ -18,7 +19,7 @@ const userQueries = {
         if(!isAValidObjectId(args.id)){
           throw new InvalidIdError();
         }
-        const user = await userServices.getUserById(args.id);
+        const user: UserDto = await userServices.getUserById(args.id);
         return serializeSuccessResponse(user);
       } catch (error) {
         console.log(error);

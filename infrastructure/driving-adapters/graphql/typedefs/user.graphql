@@ -3,9 +3,20 @@ interface IGeneralError {
     errorMessage: String
 }
 
+type PersonalInformation {
+    firstName: String,
+    surname: String,
+    sex: String,
+    documentType: String,
+    documentNumber: String,
+    phoneNumberCountryCode: String,
+    phoneNumber: String
+}
+
 type User {
     id: ID,
-    email: String
+    email: String,
+    personalInformation: PersonalInformation
 }
 
 type BusinessError implements IGeneralError {
@@ -23,9 +34,20 @@ type InvalidInputError implements IGeneralError {
     errorMessage: String
 }
 
+input PersonalInformationInput {
+    firstName: String,
+    surname: String,
+    sex: String,
+    documentType: String,
+    documentNumber: String,
+    phoneNumberCountryCode: String,
+    phoneNumber: String
+}
+
 input UserRegisterInput {
     email: String,
-    password: String
+    password: String,
+    personalInformation: PersonalInformationInput
 }
 
 union UserRegisterResult = User | BusinessError | TechnicalError | InvalidInputError

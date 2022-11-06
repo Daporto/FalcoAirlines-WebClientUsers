@@ -12,7 +12,30 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  personalInformation: {
+    firstName: {
+      type: String
+    },
+    surname: {
+      type: String
+    },
+    sex: {
+      type: String
+    },
+    documentType: {
+      type: String
+    },
+    documentNumber: {
+      type: String
+    },
+    phoneNumberCountryCode: {
+      type: String
+    },
+    phoneNumber: {
+      type: String
+    }
   }
 });
 
-module.exports = model("User", userSchema);
+module.exports = model('User', userSchema);
